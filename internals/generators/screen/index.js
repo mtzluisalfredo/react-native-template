@@ -83,13 +83,13 @@ module.exports = {
       });
       actions.push({
         type: 'add',
-        path: '../../src/store/sagas/{{properCase name}}.js',
+        path: '../../src/store/sagas/{{camelCase name}}.js',
         templateFile: './screen/saga.js.hbs',
         abortOnFail: true,
       });
       actions.push({
         type: 'add',
-        path: '../../src/store/sagas/tests/{{properCase name}}.test.js',
+        path: '../../src/store/sagas/tests/{{camelCase name}}.test.js',
         templateFile: './screen/saga.test.js.hbs',
         abortOnFail: true,
       });
