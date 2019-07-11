@@ -1,0 +1,30 @@
+import { call, put, all, takeLatest } from 'redux-saga/effects';
+import api from 'services/api';
+import { Creators as {{ properCase name }}Actions, Types as {{ properCase name }}Types } from 'store/ducks/{{ camelCase name }}';
+
+function* get{{ properCase name }}({ payload: { field1, field2 } }) {
+  try {
+    const response = yield call(api.post, '/myApi', {
+      field1,
+      field2,
+    });
+    yield put({{ properCase name }}Actions.get{{ properCase name }}Success(response.data));
+  } catch (err) {
+    yield put({{ properCase name }}Actions.get{{ properCase name }}Failure('Erro ao buscar dados da API'));
+  }
+}
+
+export default function* {{ properCase name }}Sagas() {
+  yield all([takeLatest({{ properCase name }}Types.GET_REQUEST, get{{ properCase name }})]);
+}
+
+
+
+
+
+// import { take, call, put, select } from 'redux-saga/effects';
+
+// Individual exports for testing
+export default function* {{ camelCase name }}Saga() {
+  // See example in containers/HomePage/saga.js
+}

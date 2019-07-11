@@ -5,7 +5,9 @@
   "scripts": {
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "generate": "plop --plopfile internals/generators/index.js",
+    "prettify": "prettier --write"
   },
   "dependencies": {
     "apisauce": "^1.0.3",
@@ -33,6 +35,8 @@
     "eslint": "^6.0.1",
     "jest": "^24.8.0",
     "metro-react-native-babel-preset": "^0.55.0",
+    "plop": "^2.4.0",
+    "prettier": "^1.18.2",
     "react-test-renderer": "16.8.6"
   },
   "jest": {
