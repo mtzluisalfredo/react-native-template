@@ -17,8 +17,8 @@ module.exports = {
     {
       type: 'input',
       name: 'name',
-      message: 'What should it be called?',
-      default: 'HomeScreen',
+      message: 'What should it be called? it will add "Screen" at end in /screens folder',
+      default: 'Home',
       validate: value => {
         if (/.+/.test(value)) {
           return componentExists(value)
@@ -31,27 +31,9 @@ module.exports = {
     },
     {
       type: 'confirm',
-      name: 'wantHeaders',
-      default: false,
-      message: 'Do you want headers?',
-    },
-    {
-      type: 'confirm',
       name: 'wantDucksAndSagas',
       default: true,
       message: 'Do you want an Ducks/Sagas/Types/Creators for this screen?',
-    },
-    {
-      type: 'confirm',
-      name: 'wantSaga',
-      default: true,
-      message: 'Do you want sagas for asynchronous flows? (e.g. fetching data)',
-    },
-    {
-      type: 'confirm',
-      name: 'wantMessages',
-      default: true,
-      message: 'Do you want i18n messages (i.e. will this component use text)?',
     },
   ],
   actions: data => {
@@ -71,27 +53,17 @@ module.exports = {
     const actions = [
       {
         type: 'add',
-        path: '../../src/screens/{{properCase name}}/index.js',
+        path: '../../src/screens/{{properCase name}}Screen/index.js',
         templateFile: componentTemplate,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: '../../src/screens/{{properCase name}}/tests/index.test.js',
+        path: '../../src/screens/{{properCase name}}Screen/tests/index.test.js',
         templateFile: './screen/test.js.hbs',
         abortOnFail: true,
       },
     ];
-
-    // If component wants messages
-    if (data.wantMessages) {
-      actions.push({
-        type: 'add',
-        path: '../../src/screens/{{properCase name}}/messages.js',
-        templateFile: './screen/messages.js.hbs',
-        abortOnFail: true,
-      });
-    }
 
     // If they want actions and a reducer, generate actions.js, constants.js,
     // reducer.js and the corresponding tests for actions and the reducer
