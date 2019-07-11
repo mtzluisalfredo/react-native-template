@@ -6,12 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from '.';
 
 const { persistor, store } = configureStore();
-type Props = {
-  store: {},
-  children: PropTypes.ReactComponentLike,
-};
 
-class AppStoreProvider extends PureComponent<Props> {
+class AppStoreProvider extends PureComponent {
   static childContextTypes = {
     store: PropTypes.shape({}),
   };

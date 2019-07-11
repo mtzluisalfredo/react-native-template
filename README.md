@@ -18,7 +18,6 @@ Funcional no Android e iOS.
 - seamless-immutable
 
 ## utils
-- flow
 - eslint
 
 ## Para rodar
