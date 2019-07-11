@@ -3,6 +3,7 @@
 Funcional no Android e iOS.
 
 ## libs
+- react-native@0.60.0
 - redux
 - react-redux
 - redux-saga
