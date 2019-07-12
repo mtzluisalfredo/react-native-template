@@ -5,24 +5,15 @@
  */
 
 import React from 'react';
+import { View, Text } from 'react-native';
 // import PropTypes from 'prop-types';
-// import styled from 'styled-components';
 
-{{#if wantMessages}}
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-{{/if}}
+const {{ properCase name }} = () => (
+  <View>
+    <Text>{{ properCase name }}</Text>
+  </View>
+);
 
-function {{ properCase name }}() {
-  return (
-    <div>
-    {{#if wantMessages}}
-      <FormattedMessage {...messages.header} />
-    {{/if}}
-    </div>
-  );
-}
-
-{{ properCase name }}.propTypes = {};
+// {{ properCase name }}.propTypes = {};
 
 export default {{ properCase name }};
