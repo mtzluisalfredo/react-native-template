@@ -96,7 +96,7 @@ module.exports = {
     }
 
     actions.push({
-      type: 'prettify',
+      type: 'prettifyScreen',
       path: '/screens/',
     });
 

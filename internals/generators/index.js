@@ -30,7 +30,20 @@ module.exports = plop => {
       plop.getHelper('properCase')(answers.name),
       '**.js'
     )}`;
-    exec(`npm run prettify -- "${folderPath}"`);
+    exec(`yarn prettify -- "${folderPath}"`);
+    exec(`yarn lintFolder ./src/screens/${answers.name}/ -- "${folderPath}"`);
+    return folderPath;
+  });
+  plop.setActionType('prettifyScreen', (answers, config) => {
+    const folderPath = `${path.join(
+      __dirname,
+      '/../../src/',
+      config.path,
+      `${plop.getHelper('properCase')(answers.name)}Screen/`,
+      '**.js'
+    )}`;
+    exec(`yarn prettify -- "${folderPath}"`);
+    exec(`yarn lintFolder ./src/screens/${answers.name}Screen/`);
     return folderPath;
   });
 };

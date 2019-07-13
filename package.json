@@ -6,6 +6,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
+    "lintFolder": "eslint --fix --ext .js",
     "generate": "plop --plopfile internals/generators/index.js",
     "prettify": "prettier --write",
     "postinstall": "npx jetify"
