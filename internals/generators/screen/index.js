@@ -97,7 +97,7 @@ module.exports = {
       actions.push({
         type: 'append',
         path: '../../src/store/ducks/index.js',
-        pattern: /import { combineReducers } from 'redux';/g,
+        pattern: /from 'redux';/g,
         templateFile: './screen/import.duck.js.hbs',
       });
       actions.push({
@@ -110,7 +110,7 @@ module.exports = {
       actions.push({
         type: 'append',
         path: '../../src/store/sagas/index.js',
-        pattern: /import { all, fork } from 'redux-saga\/effects';/g,
+        pattern: /from 'redux-saga\/effects';/g,
         templateFile: './screen/import.saga.js.hbs',
       });
       actions.push({
