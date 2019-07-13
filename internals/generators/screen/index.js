@@ -17,7 +17,7 @@ module.exports = {
     {
       type: 'input',
       name: 'name',
-      message: 'What should it be called? it will add "Screen" at end in /screens folder',
+      message: 'What should it be called? => {{Any}}"Screen"',
       default: 'Home',
       validate: value => {
         if (/.+/.test(value)) {
