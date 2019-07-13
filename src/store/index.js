@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import Reactotron from 'config/reactotronConfig';
+import Reactotron from 'reactotron-react-native';
 import reducers from 'store/ducks';
 import rootSaga from 'store/sagas';
 
