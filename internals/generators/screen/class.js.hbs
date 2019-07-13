@@ -5,89 +5,53 @@
  */
 
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-{{#if wantHeaders}}
-import { Helmet } from 'react-helmet';
-{{/if}}
-{{#if wantMessages}}
-import { FormattedMessage } from 'react-intl';
-{{/if}}
-{{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect';
-{{/if}}
-import { compose } from 'redux';
+import { View, Text } from 'react-native';
+// import PropTypes from 'prop-types';
 
-{{#if wantSaga}}
-import injectSaga from 'utils/injectSaga';
-{{/if}}
-{{#if wantActionsAndReducer}}
-import injectReducer from 'utils/injectReducer';
-import makeSelect{{properCase name}} from './selectors';
-import reducer from './reducer';
-{{/if}}
-{{#if wantSaga}}
-import saga from './saga';
-{{/if}}
-{{#if wantMessages}}
-import messages from './messages';
+{{#if wantDucksAndSagas}}
+import { connect } from 'react-redux';
+// import { Creators as {{ properCase name }}Creators } from 'store/ducks/{{ camelCase name }}';
 {{/if}}
 
 /* eslint-disable react/prefer-stateless-function */
-export class {{ properCase name }} extends {{{ type }}} {
+export class {{ properCase name }}Screen extends {{{ type }}} {
+  state = {};
+
+  // getInitialData = () => {
+  //  const { dispatch } = this.props;
+  //  dispatch({{ properCase name }}Creators.get{{ properCase name }}Request(({field1: 'hello', field2: 'world'})));
+  // }
+
+  // componentDidMount(){
+  //  this.getInitialData();
+  // }
+
   render() {
     return (
-      <div>
-      {{#if wantHeaders}}
-        <Helmet>
-          <title>{{properCase name}}</title>
-          <meta name="description" content="Description of {{properCase name}}" />
-        </Helmet>
-      {{/if}}
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{/if}}
-      </div>
+      <View>
+        <Text>{{properCase name }}Screen</Text>
+      </View>
     );
   }
 }
 
-{{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+// {{ properCase name }}Screen.propTypes = {
+//   dispatch: PropTypes.func.isRequired,
+// };
+
+{{#if wantDucksAndSagas}}
+const mapDispatchToProps = (dispatch) => ({ dispatch });
+
+const mapStateToProps = ({ {{camelCase name}} }) => {
+  const { data, loading, error } = {{camelCase name}};
+  return { data, loading, error };
 };
 
-{{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{ camelCase name }}: makeSelect{{properCase name}}(),
-});
-{{/if}}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-{{#if wantActionsAndReducer}}
-const withConnect = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-);
+)({{ properCase name }}Screen)
 
-const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer });
 {{else}}
-const withConnect = connect(null, mapDispatchToProps);
+export default {{ properCase name }};
 {{/if}}
-{{#if wantSaga}}
-const withSaga = injectSaga({ key: '{{ camelCase name }}', saga });
-{{/if}}
-
-export default compose(
-{{#if wantActionsAndReducer}}
-  withReducer,
-{{/if}}
-{{#if wantSaga}}
-  withSaga,
-{{/if}}
-  withConnect
-)({{ properCase name }});
