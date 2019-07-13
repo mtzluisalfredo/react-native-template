@@ -6,5 +6,8 @@
     "checkJs": false,
     "target": "esnext",
     "jsx": "preserve"
+  },
+  "typeAcquisition": {
+    "include": ["jest"]
   }
 }
