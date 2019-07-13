@@ -1,11 +1,76 @@
-// import React from 'react';
-// import { mount } from 'enzyme';
-// import { enzymeFind } from 'styled-components/test-utils';
+import React from 'react';
+{{#if wantDucksAndSagas}}
+import configureStore from 'redux-mock-store';
+{{/if}}
+import { shallow } from 'enzyme';
+{{#if wantDucksAndSagas}}
 
-// import { {{ properCase name }} } from '../index';
+import { Creators } from 'store/ducks/{{ camelCase name }}';
+{{/if}}
+import {{ properCase name }}Screen from '../index';
 
-describe('<{{ properCase name }} />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+{{#if wantDucksAndSagas}}
+
+// create any initial state needed
+const initialState = {
+  data: [],
+  loading: false,
+  error: null,
+};
+
+const mockStore = configureStore();
+let store;
+
+{{/if}}
+describe('Test {{ properCase name }}Screen', () => {
+  let wrapper;
+{{#if wantDucksAndSagas}}
+  // our mock dispatch
+  const dispatch = jest.fn();
+{{/if}}
+
+  beforeEach(() => {
+{{#if wantDucksAndSagas}}
+    store = mockStore({ {{ camelCase name }}: initialState });
+    store.dispatch = dispatch;
+    wrapper = shallow(<{{ properCase name }}Screen store={store} dispatch={dispatch} />).dive();
+{{else}}
+    wrapper = shallow(<{{ properCase name }}Screen />);
+{{/if}}
   });
+
+{{#if wantDucksAndSagas}}
+  test('{{ properCase name }}: renders correctly', () => {
+    const component = wrapper.dive();
+    expect(component.dive().findWhere(c => c.prop('testID') === 'container').length).toEqual(
+      1
+    );
+    expect(
+      component.dive().findWhere(c => c.prop('testID') === 'container.text').length
+    ).toEqual(1);
+    expect(component.instance().state.text).toBe('Hello World');
+    expect(component.dive()).toMatchSnapshot();
+  });
+
+  test('Call action onPress on Text', () => {
+    const component = wrapper.dive();
+    component
+      .dive()
+      .findWhere(c => c.prop('testID') === 'container.text')
+      .props()
+      .onPress();
+    expect(dispatch).toHaveBeenCalledWith(
+      Creators.get{{ properCase name }}Request({ field1: 'hello', field2: 'world' })
+    );
+    expect(dispatch.mock.calls.length).toBe(1);
+  });
+{{else}}
+  test('{{ properCase name }}Screen: renders correctly', () => {
+    const component = wrapper.dive();
+    expect(component.findWhere(c => c.prop('testID') === 'container').length).toEqual(1);
+    expect(component.findWhere(c => c.prop('testID') === 'container.text').length).toEqual(1);
+    expect(wrapper.instance().state.text).toBe('Hello World');
+    expect(component).toMatchSnapshot();
+  });
+{{/if}}
 });

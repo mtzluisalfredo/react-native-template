@@ -1,8 +1,14 @@
-import { fromJS } from 'immutable';
-import {{ camelCase name }}Reducer from '../reducer';
+import Immutable from 'seamless-immutable';
+import {{ camelCase name }}Reducer from '../{{ camelCase name }}';
 
 describe('{{ camelCase name }}Reducer', () => {
   it('returns the initial state', () => {
-    expect({{ camelCase name }}Reducer(undefined, {})).toEqual(fromJS({}));
+    expect({{ camelCase name }}Reducer(undefined, {})).toEqual(
+      Immutable({
+        data: [],
+        loading: false,
+        error: null,
+      })
+    );
   });
 });

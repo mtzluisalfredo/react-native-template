@@ -1,6 +1,6 @@
 /**
  *
- * {{properCase name }}
+ * {{properCase name }}Screen
  *
  */
 
@@ -10,26 +10,30 @@ import { View, Text } from 'react-native';
 
 {{#if wantDucksAndSagas}}
 import { connect } from 'react-redux';
-// import { Creators as {{ properCase name }}Creators } from 'store/ducks/{{ camelCase name }}';
+import { Creators as {{ properCase name }}Creators } from 'store/ducks/{{ camelCase name }}';
 {{/if}}
+class {{ properCase name }}Screen extends {{{ type }}} {
+  state = {
+    text: 'Hello World',
+  };
 
-/* eslint-disable react/prefer-stateless-function */
-export class {{ properCase name }}Screen extends {{{ type }}} {
-  state = {};
-
-  // getInitialData = () => {
-  //  const { dispatch } = this.props;
-  //  dispatch({{ properCase name }}Creators.get{{ properCase name }}Request({ field1: 'hello', field2: 'world' }));
-  // }
+{{#if wantDucksAndSagas}}
+  getInitialData = () => {
+    const { dispatch } = this.props;
+    dispatch({{ properCase name }}Creators.get{{ properCase name }}Request({ field1: 'hello', field2: 'world' }));
+  };
 
   // componentDidMount(){
   //  this.getInitialData();
-  // }
-
+  // };
+{{/if}}
   render() {
+    const { text } = this.state;
     return (
-      <View>
-        <Text>{{properCase name }}Screen</Text>
+      <View testID="container">
+        <Text testID="container.text"{{#if wantDucksAndSagas}} onPress={this.getInitialData}{{/if}}>
+          {text}
+        </Text>
       </View>
     );
   }
@@ -40,7 +44,7 @@ export class {{ properCase name }}Screen extends {{{ type }}} {
 // };
 
 {{#if wantDucksAndSagas}}
-const mapDispatchToProps = (dispatch) => ({ dispatch });
+const mapDispatchToProps = dispatch => ({ dispatch });
 
 const mapStateToProps = ({ {{camelCase name}} }) => {
   const { data, loading, error } = {{camelCase name}};
@@ -50,8 +54,7 @@ const mapStateToProps = ({ {{camelCase name}} }) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)({{ properCase name }}Screen)
-
+)({{ properCase name }}Screen);
 {{else}}
-export default {{ properCase name }};
+export default {{ properCase name }}Screen;
 {{/if}}
