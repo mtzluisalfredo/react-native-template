@@ -9,12 +9,10 @@ const path = require('path');
 const { exec } = require('child_process');
 const componentGenerator = require('./component/index.js');
 const screenGenerator = require('./screen/index.js');
-const languageGenerator = require('./language/index.js');
 
 module.exports = plop => {
   plop.setGenerator('component', componentGenerator);
   plop.setGenerator('screen', screenGenerator);
-  plop.setGenerator('language', languageGenerator);
   plop.addHelper('directory', comp => {
     try {
       fs.accessSync(path.join(__dirname, `../../src/screens/${comp}`), fs.F_OK);
