@@ -57,13 +57,16 @@ module.exports = {
         templateFile: componentTemplate,
         abortOnFail: true,
       },
-      {
+    ];
+
+    if (data.type !== 'Stateless') {
+      actions.push({
         type: 'add',
         path: '../../src/screens/{{properCase name}}Screen/tests/index.test.js',
         templateFile: './screen/test.js.hbs',
         abortOnFail: true,
-      },
-    ];
+      });
+    }
 
     // If they want actions and a reducer, generate actions.js, constants.js,
     // reducer.js and the corresponding tests for actions and the reducer
