@@ -42,8 +42,13 @@ module.exports = plop => {
       `${plop.getHelper('properCase')(answers.name)}Screen/`,
       '**.js'
     )}`;
-    exec(`yarn prettify -- "${folderPath}"`);
     exec(`yarn lintFolder ./src/screens/${answers.name}Screen/`);
+    return folderPath;
+  });
+  plop.setActionType('prettifyRootSaga', (answers, config) => {
+    const folderPath = `${path.join(__dirname, '/../../src/', config.path)}`;
+    exec(`yarn lintFolder ${folderPath}/ducks/index.js`);
+    exec(`yarn lintFolder ${folderPath}/sagas/index.js`);
     return folderPath;
   });
 };

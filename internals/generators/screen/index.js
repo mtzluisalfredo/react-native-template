@@ -93,6 +93,36 @@ module.exports = {
         templateFile: './screen/saga.test.js.hbs',
         abortOnFail: true,
       });
+      // Auto import reducer
+      actions.push({
+        type: 'append',
+        path: '../../src/store/ducks/index.js',
+        pattern: /import { combineReducers } from 'redux';/g,
+        templateFile: './screen/import.duck.js.hbs',
+      });
+      actions.push({
+        type: 'append',
+        path: '../../src/store/ducks/index.js',
+        pattern: /export default combineReducers\({/g,
+        templateFile: './screen/import.duck-step2.js.hbs',
+      });
+      // Auto import saga
+      actions.push({
+        type: 'append',
+        path: '../../src/store/sagas/index.js',
+        pattern: /import { all, fork } from 'redux-saga\/effects';/g,
+        templateFile: './screen/import.saga.js.hbs',
+      });
+      actions.push({
+        type: 'append',
+        path: '../../src/store/sagas/index.js',
+        pattern: /yield all\(\[/g,
+        templateFile: './screen/import.saga-step2.js.hbs',
+      });
+      actions.push({
+        type: 'prettifyRootSaga',
+        path: '/store/',
+      });
     }
 
     actions.push({
