@@ -9,7 +9,9 @@
     "lintFolder": "eslint --fix --ext .js",
     "generate": "plop --plopfile internals/generators/index.js",
     "prettify": "prettier --write",
-    "postinstall": "npx jetify"
+    "postinstall": "npx jetify",
+    "reload": "adb shell input keyevent 46 46",
+    "reverse": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
     "apisauce": "^1.0.3",
