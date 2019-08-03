@@ -2,6 +2,7 @@ platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
 target 'reactnativetemplate' do
+  rn_maps_path = '../node_modules/react-native-maps'
   # Pods for reactnativetemplate
   pod 'React', :path => '../node_modules/react-native/'
   pod 'React-Core', :path => '../node_modules/react-native/React'
@@ -29,6 +30,10 @@ target 'reactnativetemplate' do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
   pod 'ReactNativeNavigation', :path => '../node_modules/react-native-navigation'
+
+   pod 'react-native-google-maps', path: rn_maps_path  # Uncomment this line if you want to support GoogleMaps on iOS
+  pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
+  pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
 
   target 'reactnativetemplateTests' do
     inherit! :search_paths
