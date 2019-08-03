@@ -32,6 +32,8 @@ PODS:
   - GoogleMaps/Base (3.1.0)
   - GoogleMaps/Maps (3.1.0):
     - GoogleMaps/Base
+  - Interactable (1.0.0):
+    - React
   - React (0.60.3):
     - React-Core (= 0.60.3)
     - React-DevSupport (= 0.60.3)
@@ -120,6 +122,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - Google-Maps-iOS-Utils
   - GoogleMaps
+  - Interactable (from `../node_modules/react-native-interactable/lib/ios`)
   - React (from `../node_modules/react-native/`)
   - React-Core (from `../node_modules/react-native/React`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
@@ -157,6 +160,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  Interactable:
+    :path: "../node_modules/react-native-interactable/lib/ios"
   React:
     :path: "../node_modules/react-native/"
   React-Core:
@@ -211,6 +216,7 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   Google-Maps-iOS-Utils: c32891ff472eaaa1fca032beedafa1a013af7875
   GoogleMaps: 5c13302e6fe6bb6e686b267196586b91cd594225
+  Interactable: b454a1fe6ded81774e066873c51396c65bd0fa49
   React: ac23e9cc8d2d4cfe9b536b5cc0c32d19b9937bcf
   React-Core: 84de3cf80e31f0267c5ce0b5b482d59ce30a8a57
   React-cxxreact: a802a1c6b14f3de66ba032460b424c17ececd1e2
