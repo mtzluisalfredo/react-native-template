@@ -20,7 +20,7 @@
     "react-dom": "^16.8.6",
     "react-native": "0.60.3",
     "react-native-elements": "^1.1.0",
-    "react-native-interactable": "git+https://github.com/mtzluisalfredo/react-native-interactable.git#master",
+    "react-native-interactable": "git+https://github.com/mtzluisalfredo/react-native-interactable.git",
     "react-native-maps": "0.25.0",
     "react-native-navigation": "3.0.0-alpha.2",
     "react-native-vector-icons": "^6.6.0",
