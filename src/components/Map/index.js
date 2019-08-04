@@ -24,15 +24,6 @@ import Details from '../Details';
 const LATITUDE_DELTA = 0.0143;
 const LONGITUDE_DELTA = 0.134;
 
-/*
-    TUTORIAL:
-        https://www.youtube.com/watch?v=bg-U0xZwcRk&index=13&list=PL85ITvJ7FLojBfY7TifCq7P417AZdsP4k
-
-    API DOC:
-        https://github.com/react-native-community/react-native-maps
-        https://github.com/react-native-community/react-native-maps/blob/master/docs/installation.md
-*/
-
 Geocoder.init(API_KEY);
 
 export default class Map extends Component {
@@ -70,7 +61,6 @@ export default class Map extends Component {
   async componentDidMount() {
     Geolocation.getCurrentPosition(
       async ({ coords: { latitude, longitude } }) => {
-      console.log("TCL: componentDidMount -> latitude, longitude", latitude, longitude)
         //success callback
         const response = await Geocoder.from({ latitude, longitude });
         const address = response.results[0].formatted_address;
@@ -89,9 +79,7 @@ export default class Map extends Component {
       },
       () => {}, //error callback
       {
-        timeout: 20000, //tempo para tenta pegar a localização do usuario.
         enableHighAccuracy: true, //localização via GPS, mais real. false -> wifi location
-        maximumAge: 1000, //intervalos de um segundo para pegar a localização.
       }
     );
   }
@@ -101,7 +89,6 @@ export default class Map extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <StatusBar translucent={true} backgroundColor={'transparent'} />
         <MapView
           style={{ flex: 1 }}
           initialRegion={region}
