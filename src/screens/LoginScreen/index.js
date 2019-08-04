@@ -1,113 +1,38 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Animated } from 'react-native';
-import Interactable from 'react-native-interactable';
+import { StyleSheet, View } from 'react-native';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this._deltaX = new Animated.Value(0);
   }
   render() {
     return (
       <View style={styles.container}>
-        <View style={{ backgroundColor: '#32B76C' }}>
-          <View
-            style={{
-              position: 'absolute',
-              right: 0,
-              height: 75,
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <Animated.View
-              style={[
-                styles.button,
-                {
-                  opacity: this._deltaX.interpolate({
-                    inputRange: [-230, -230, -180, -180],
-                    outputRange: [1, 1, 0, 0],
-                  }),
-                  transform: [
-                    {
-                      scale: this._deltaX.interpolate({
-                        inputRange: [-230, -230, -180, -180],
-                        outputRange: [1, 1, 0.8, 0.8],
-                      }),
-                    },
-                  ],
-                },
-              ]}
-            />
-            <Animated.View
-              style={[
-                styles.button,
-                {
-                  opacity: this._deltaX.interpolate({
-                    inputRange: [-165, -165, -115, -115],
-                    outputRange: [1, 1, 0, 0],
-                  }),
-                  transform: [
-                    {
-                      scale: this._deltaX.interpolate({
-                        inputRange: [-165, -165, -115, -115],
-                        outputRange: [1, 1, 0.8, 0.8],
-                      }),
-                    },
-                  ],
-                },
-              ]}
-            />
-            <Animated.View
-              style={[
-                styles.button,
-                {
-                  opacity: this._deltaX.interpolate({
-                    inputRange: [-100, -100, -50, -50],
-                    outputRange: [1, 1, 0, 0],
-                  }),
-                  transform: [
-                    {
-                      scale: this._deltaX.interpolate({
-                        inputRange: [-100, -100, -50, -50],
-                        outputRange: [1, 1, 0.8, 0.8],
-                      }),
-                    },
-                  ],
-                },
-              ]}
-            />
-          </View>
-
-          <Interactable.View
-            horizontalOnly={true}
-            snapPoints={[{ x: 0, id: 'closed' }, { x: -230, id: 'open' }]}
-            onSnap={this.onDrawerSnap}
-            animatedValueX={this._deltaX}
-          >
-            <View style={{ left: 0, right: 0, height: 75, backgroundColor: '#e0e0e0' }} />
-          </Interactable.View>
-        </View>
+        <MapView
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          style={styles.map}
+          region={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.0121,
+          }}
+        />
       </View>
     );
-  }
-  onDrawerSnap(event) {
-    const snapPointId = event.nativeEvent.id;
-    console.log(`drawer state is ${snapPointId}`);
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: 'white',
+    ...StyleSheet.absoluteFillObject,
+    height: 400,
+    width: 400,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
   },
-  button: {
-    width: 40,
-    height: 40,
-    marginRight: 25,
-    backgroundColor: '#EE2C38',
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 });
-
