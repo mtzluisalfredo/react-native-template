@@ -35,6 +35,8 @@ target 'reactnativetemplate' do
   pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'reactnativetemplateTests' do
     inherit! :search_paths
     # Pods for testing

@@ -14,12 +14,16 @@
     "reverse": "adb reverse tcp:8081 tcp:8081 && adb reverse tcp:9090 tcp:9090"
   },
   "dependencies": {
+    "@react-native-community/geolocation": "^1.4.2",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-dom": "^16.8.6",
     "react-native": "0.60.3",
+    "react-native-geocoding": "^0.3.0",
+    "react-native-google-places-autocomplete": "^1.3.9",
     "react-native-interactable": "git+https://github.com/mtzluisalfredo/react-native-interactable.git",
     "react-native-maps": "0.25.0",
+    "react-native-maps-directions": "^1.7.0",
     "react-native-navigation": "3.0.0-alpha.2",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.1.0",
