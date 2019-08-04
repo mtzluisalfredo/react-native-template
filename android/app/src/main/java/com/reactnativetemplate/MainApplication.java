@@ -14,6 +14,7 @@ import com.facebook.soloader.SoLoader;
 
 import com.wix.interactable.Interactable;
 import com.airbnb.android.react.maps.MapsPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
 
 import com.reactnativenavigation.NavigationApplication;
 import com.reactnativenavigation.react.NavigationReactNativeHost;
@@ -45,7 +46,8 @@ public class MainApplication extends NavigationApplication {
       // No need to add RnnPackage and MainReactPackage
       return Arrays.<ReactPackage>asList(
         new MapsPackage(),
-        new Interactable()
+        new Interactable(),
+        new VectorIconsPackage()
           // eg. new VectorIconsPackage()
       );
   }
