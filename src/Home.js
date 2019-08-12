@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import PropTypes from 'prop-types';
@@ -31,7 +32,18 @@ class Home extends Component {
   };
 
   render() {
-    return <Map />;
+    return (
+      <View
+        style={{
+          width: '100%',
+          height: 300,
+          backgroundColor: '#303f9f',
+          borderBottomLeftRadius: 100,
+        }}
+      >
+        <Text>Luis</Text>
+      </View>
+    );
   }
 }
 
@@ -48,9 +60,10 @@ Home.options = () => {
       backgroundColor: '#F7F8F8',
     },
     topBar: {
+      noBorder: true,
       elevation: 0,
       background: {
-        color: '#000051',
+        color: '#303f9f',
       },
     },
   };
