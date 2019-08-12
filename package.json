@@ -24,7 +24,7 @@
     "react-native-interactable": "git+https://github.com/mtzluisalfredo/react-native-interactable.git",
     "react-native-maps": "0.25.0",
     "react-native-maps-directions": "^1.7.0",
-    "react-native-navigation": "3.0.0-alpha.2",
+    "react-native-navigation": "3.0.0-alpha.11",
     "react-native-vector-icons": "^6.6.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",

@@ -47,6 +47,12 @@ Home.options = () => {
     layout: {
       backgroundColor: '#F7F8F8',
     },
+    topBar: {
+      elevation: 0,
+      background: {
+        color: '#000051',
+      },
+    },
   };
 };
 

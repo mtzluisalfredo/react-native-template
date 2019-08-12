@@ -77,7 +77,7 @@ export default class Map extends Component {
           },
         });
       },
-      () => {}, //error callback
+      () => { }, //error callback
       {
         enableHighAccuracy: true, //localização via GPS, mais real. false -> wifi location
       }
@@ -90,6 +90,8 @@ export default class Map extends Component {
     return (
       <View style={{ flex: 1 }}>
         <MapView
+          showsCompass={true}
+          showsMyLocationButton={false}
           style={{ flex: 1 }}
           initialRegion={region}
           showsUserLocation
@@ -142,8 +144,8 @@ export default class Map extends Component {
             <Details />
           </Fragment>
         ) : (
-          <Search onLocationSelected={this.handleLocationSelected} />
-        )}
+            <Search onLocationSelected={this.handleLocationSelected} />
+          )}
       </View>
     );
   }
