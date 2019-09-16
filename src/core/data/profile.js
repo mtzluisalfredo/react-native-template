@@ -1,0 +1,352 @@
+import {
+  imageFeed1,
+  imageFeed2,
+  imageFeed3,
+  imageFeed4,
+  imageFeed5,
+  imageFeed6,
+  imageFeed7,
+  imageFeed8,
+  imageFeed9,
+  imageProfile1,
+  imageProfile10,
+  imageProfile2,
+  imageProfile3,
+  imageProfile4,
+  imageProfile5,
+  imageProfile6,
+  imageProfile7,
+  imageProfile8,
+  imageProfile9,
+} from '../../assets/images';
+
+export const profile1 = {
+  photo: imageProfile1,
+  about: "Hi! My name is Arne. I'm 29 and I live in Berlin." + " I'm fighting cancer type ABC",
+  firstName: 'Arne',
+  lastName: 'Kienapfel',
+  gender: 'Male',
+  age: 29,
+  weight: 72,
+  height: 180,
+  inseam: 45,
+  email: 'akienapfel@web.de',
+  phoneNumber: '+49 171826 7295',
+  location: 'Berlin, Germany',
+  friends: [],
+  onLine: true,
+};
+
+export const profile2 = {
+  photo: imageProfile2,
+  about:
+    "Hi! My name is Alexa. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Alexa',
+  lastName: 'Tenorio',
+  gender: 'Female',
+  age: 25,
+  weight: 48,
+  height: 174,
+  inseam: 44,
+  email: 'alexa.tenorio@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Portland, USA',
+  friends: [],
+  onLine: false,
+};
+
+export const profile3 = {
+  photo: imageProfile3,
+  about:
+    "Hi! My name is Isaac. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Isaac',
+  lastName: 'Hunt',
+  gender: 'Male',
+  age: 34,
+  weight: 113,
+  height: 203,
+  inseam: 46,
+  email: 'daly.harry@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Cleveland, USA',
+  friends: [],
+  onLine: true,
+};
+
+export const profile4 = {
+  photo: imageProfile4,
+  about: "Hi! My name is Jen. I'm 41 and I live in Atlanta." + " I'm interested in swag, rap.",
+  firstName: 'Jen',
+  lastName: 'Austin',
+  gender: 'Female',
+  age: 25,
+  weight: 48,
+  height: 174,
+  inseam: 44,
+  email: 'jen.austin@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Berlin, Germany',
+  friends: [profile1, profile2, profile3],
+  onLine: false,
+};
+
+export const profile5 = {
+  photo: imageProfile5,
+  about:
+    "Hi! My name is Kristen. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Kirsten',
+  lastName: 'Crarke',
+  gender: 'Female',
+  age: 25,
+  weight: 48,
+  height: 174,
+  inseam: 44,
+  email: 'kirs.clarke@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Australia',
+  friends: [profile1, profile2, profile3],
+  onLine: true,
+};
+
+export const profile6 = {
+  photo: imageProfile6,
+  about:
+    "I'm a Traveller. I like listening to music," +
+    ' going to the cinema, walking with my friends, drawing pictures and travelling',
+  firstName: 'Helen',
+  lastName: 'Kuper',
+  gender: 'Female',
+  age: 25,
+  weight: 48,
+  height: 174,
+  inseam: 44,
+  email: 'helen.kuper@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Germany',
+  friends: [profile1, profile2, profile3],
+  onLine: false,
+};
+
+export const profile7 = {
+  photo: imageProfile7,
+  about:
+    "Hi! My name is Dushane. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Dushane',
+  lastName: 'Daniel',
+  gender: 'Male',
+  age: 56,
+  weight: 99,
+  height: 185,
+  inseam: 45,
+  email: 'isaac.hunt@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'NY, USA',
+  friends: [profile1, profile2, profile3],
+  onLine: true,
+};
+
+export const profile8 = {
+  photo: imageProfile8,
+  about:
+    "Hi! My name is Shirai. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Shirai',
+  lastName: 'Subaru',
+  gender: 'Female',
+  age: 60,
+  weight: 88,
+  height: 167,
+  inseam: 43,
+  email: 'shirai.subaru@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Oslo, Norway',
+  friends: [profile1, profile2, profile3],
+  onLine: false,
+};
+
+export const profile9 = {
+  photo: imageProfile9,
+  about:
+    "Hi! My name is Ray. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Ray',
+  lastName: 'Cooper',
+  gender: 'Male',
+  age: 26,
+  weight: 55,
+  height: 175,
+  inseam: 36,
+  email: 'lidmila.vilensky@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Minsk, Belarus',
+  friends: [profile1, profile2, profile3],
+  onLine: false,
+};
+
+export const profile10 = {
+  photo: imageProfile10,
+  about:
+    "Hi! My name is Alex. I'm 25 and I live in Berlin." +
+    " I'm interested in computer science, music, sport and fantasy literature",
+  firstName: 'Alex',
+  lastName: 'Walker',
+  gender: 'Male',
+  age: 22,
+  weight: 55,
+  height: 170,
+  inseam: 39,
+  email: 'alex.walker@gmail.com',
+  phoneNumber: '+375 44 123 12 12',
+  location: 'Erlangen, Germany',
+  friends: [profile1, profile2, profile3],
+  onLine: false,
+};
+
+export const profileSocials1Socials = {
+  followers: 1500,
+  following: 86,
+  posts: 116,
+};
+
+export const profileActivity1Activity = [
+  {
+    category: 'Plants',
+    source: imageFeed1,
+  },
+  {
+    category: 'Plants',
+    source: imageFeed2,
+  },
+  {
+    category: 'Plants',
+    source: imageFeed3,
+  },
+  {
+    category: 'Plants',
+    source: imageFeed1,
+  },
+  {
+    category: 'Plants',
+    source: imageFeed2,
+  },
+  {
+    category: 'Travel',
+    source: imageFeed7,
+  },
+  {
+    category: 'Travel',
+    source: imageFeed8,
+  },
+  {
+    category: 'Travel',
+    source: imageFeed9,
+  },
+  {
+    category: 'Travel',
+    source: imageFeed8,
+  },
+  {
+    category: 'Travel',
+    source: imageFeed7,
+  },
+  {
+    category: 'style',
+    source: imageFeed4,
+  },
+  {
+    category: 'style',
+    source: imageFeed5,
+  },
+  {
+    category: 'style',
+    source: imageFeed6,
+  },
+  {
+    category: 'style',
+    source: imageFeed4,
+  },
+  {
+    category: 'style',
+    source: imageFeed5,
+  },
+];
+
+export const categorisedProfileActivity1 = {
+  ['Plants']: [
+    {
+      category: 'Plants',
+      source: imageFeed1,
+    },
+    {
+      category: 'Plants',
+      source: imageFeed2,
+    },
+    {
+      category: 'Plants',
+      source: imageFeed3,
+    },
+    {
+      category: 'Plants',
+      source: imageFeed1,
+    },
+    {
+      category: 'Plants',
+      source: imageFeed2,
+    },
+  ],
+  ['Travel']: [
+    {
+      category: 'Travel',
+      source: imageFeed7,
+    },
+    {
+      category: 'Travel',
+      source: imageFeed8,
+    },
+    {
+      category: 'Travel',
+      source: imageFeed9,
+    },
+    {
+      category: 'Travel',
+      source: imageFeed8,
+    },
+    {
+      category: 'Travel',
+      source: imageFeed7,
+    },
+  ],
+  ['Style']: [
+    {
+      category: 'Style',
+      source: imageFeed4,
+    },
+    {
+      category: 'Style',
+      source: imageFeed5,
+    },
+    {
+      category: 'Style',
+      source: imageFeed6,
+    },
+    {
+      category: 'Style',
+      source: imageFeed4,
+    },
+    {
+      category: 'Style',
+      source: imageFeed5,
+    },
+  ],
+};
+
+export const profileSocials1 = {
+  followers: 1500,
+  following: 86,
+  posts: 116,
+};
+
