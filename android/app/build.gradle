@@ -198,6 +198,7 @@ configurations.all {
 }
 
 dependencies {
+    implementation project(':amazon-cognito-identity-js')
     implementation project(':@react-native-community_geolocation')
     implementation project(':react-native-maps')
     implementation fileTree(dir: "libs", include: ["*.jar"])

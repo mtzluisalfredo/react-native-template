@@ -37,6 +37,10 @@ target 'reactnativetemplate' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNAWSCognito', :path => '../node_modules/amazon-cognito-identity-js'
+
   target 'reactnativetemplateTests' do
     inherit! :search_paths
     # Pods for testing
