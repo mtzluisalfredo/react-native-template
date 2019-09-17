@@ -24,6 +24,13 @@ export class Initializing extends Component {
     this.state = {
       user: 0,
     };
+    Navigation.setDefaultOptions({
+      topBar: {
+        visible: false,
+        drawBehind: true,
+        animate: false,
+      },
+    });
   }
 
   componentDidMount() {
@@ -83,16 +90,6 @@ const mapStateToProps = () => {
 };
 
 const actions = { ...counterActions };
-
-Initializing.options = () => {
-  return {
-    topBar: {
-      visible: false,
-      drawBehind: true,
-      animate: false,
-    },
-  };
-};
 
 export default connect(
   mapStateToProps,

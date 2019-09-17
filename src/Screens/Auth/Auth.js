@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { Navigation } from 'react-native-navigation';
 import * as counterActions from './../../redux/actions';
 import { withStyles } from 'react-native-ui-kitten/theme';
 import { Button, Text } from 'react-native-ui-kitten/ui';
@@ -9,6 +10,17 @@ import { SignInForm2, SocialAuth } from './../../components/auth';
 import { ScrollableAvoidKeyboard, ImageOverlay, textStyle } from './../../components/common';
 
 class AuthComponent extends Component {
+  constructor(props) {
+    super(props);
+    Navigation.setDefaultOptions({
+      topBar: {
+        visible: false,
+        drawBehind: true,
+        animate: false,
+      },
+    });
+  }
+
   state = {
     formData: undefined,
   };
@@ -17,7 +29,7 @@ class AuthComponent extends Component {
   };
 
   onSignInButtonPress = () => {
-    this.props.onSignInPress(this.state.formData);
+    this.props.login(this.state.formData);
   };
 
   onSignUpButtonPress = () => {
@@ -25,15 +37,15 @@ class AuthComponent extends Component {
   };
 
   onGoogleButtonPress = () => {
-    this.props.onGooglePress();
+    // this.props.onGooglePress();
   };
 
   onFacebookButtonPress = () => {
-    this.props.onFacebookPress();
+    // this.props.onFacebookPress();
   };
 
   onTwitterButtonPress = () => {
-    this.props.onTwitterPress();
+    // this.props.onTwitterPress();
   };
 
   onFormDataChange = formData => {
@@ -97,8 +109,6 @@ AuthComponent.propTypes = {
 };
 
 AuthComponent.defaultProps = {};
-
-AuthComponent.options = () => {};
 
 const mapStateToProps = state => {
   console.log('TCL: state', state);

@@ -14,6 +14,7 @@ export const login = ({ username, password }) => async dispatch => {
   dispatch({ type: types.LOADING });
   try {
     const user = await Auth.signIn(username, password);
+    console.log('TCL: user', user);
     dispatch({
       type: types.USER_LOGIN,
       attributes: user.attributes,

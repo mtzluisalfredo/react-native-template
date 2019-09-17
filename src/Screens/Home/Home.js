@@ -55,9 +55,9 @@ class HomeComponent extends React.Component {
                 layout: { backgroundColor: 'rgba(52, 52, 52, 0.5)' },
                 screenBackgroundColor: 'rgba(52, 52, 52, 0.5)',
                 modalPresentationStyle: 'overCurrentContext',
-                topBar: {
-                  visible: false,
-                },
+                // topBar: {
+                //   visible: false,
+                // },
               },
             },
           },
