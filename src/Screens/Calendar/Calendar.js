@@ -3,8 +3,9 @@ import { ScrollView, Text } from 'react-native';
 import { Navigation } from 'react-native-navigation';
 import { withStyles } from 'react-native-ui-kitten/theme';
 import { Layout, Button } from 'react-native-ui-kitten/ui';
-import { ActionCreators } from './../../redux/action';
-import { bindActionCreators } from 'redux';
+import * as counterActions from './../../redux/actions';
+// import { ActionCreators } from '../../redux/actions';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 var dateNew = new Date('August 28, 2019 23:15:00');
@@ -128,11 +129,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+const actions = { ...counterActions };
 
 const CalendarComponentRedux = connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(CalendarComponent);
 
 export const Calendar = withStyles(CalendarComponentRedux, theme => {

@@ -1,51 +1,51 @@
 import React from 'react';
-import { View, Platform, StatusBar } from 'react-native';
+// import { View, Platform, StatusBar } from 'react-native';
 import { mapping, light, dark } from '@eva-design/eva';
 import { withStyles, ApplicationProvider } from 'react-native-ui-kitten/theme';
 import { connect } from 'react-redux';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+// import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 // import translate from '../locales';
 
 // const extraProps = { translate };
-const extraProps = { };
+const extraProps = {};
 
-class DynamicStatusBarComponent extends React.Component {
-  getStatusBarContent = () => {
-    if (this.props.currentTheme === 'dark') {
-      return 'dark-content';
-    } else {
-      return 'light-content';
-    }
-  };
+// class DynamicStatusBarComponent extends React.Component {
+//   getStatusBarContent = () => {
+//     if (this.props.currentTheme === 'dark') {
+//       return 'dark-content';
+//     } else {
+//       return 'light-content';
+//     }
+//   };
 
-  render() {
-    const { themedStyle } = this.props;
+//   render() {
+//     const { themedStyle } = this.props;
 
-    const androidStatusBarBgColor = themedStyle.container.backgroundColor;
-    const barStyle = this.getStatusBarContent();
+//     const androidStatusBarBgColor = themedStyle.container.backgroundColor;
+//     const barStyle = this.getStatusBarContent();
 
-    return (
-      <View style={themedStyle.container}>
-        <StatusBar backgroundColor={androidStatusBarBgColor} barStyle={barStyle} />
-      </View>
-    );
-  }
-}
+//     return (
+//       <View style={themedStyle.container}>
+//         <StatusBar backgroundColor={androidStatusBarBgColor} barStyle={barStyle} />
+//       </View>
+//     );
+//   }
+// }
 
-const DynamicStatusBar = withStyles(DynamicStatusBarComponent, theme => ({
-  container: {
-    backgroundColor: theme['background-basic-color-1'],
-    height: Platform.select({
-      ios: getStatusBarHeight(),
-      android: 0,
-    }),
-  },
-}));
+// const DynamicStatusBar = withStyles(DynamicStatusBarComponent, theme => ({
+//   container: {
+//     backgroundColor: theme['background-basic-color-1'],
+//     height: Platform.select({
+//       ios: getStatusBarHeight(),
+//       android: 0,
+//     }),
+//   },
+// }));
 
 class Wrapper extends React.Component {
   render() {
-    const { Screen, ScreenProps, app } = this.props;
+    const { Screen, ScreenProps /* app */ } = this.props;
     const appTheme = 'dark';
     return (
       <ApplicationProvider mapping={mapping} theme={appTheme === 'dark' ? dark : light}>

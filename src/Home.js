@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet } from 'react-native';
-import { Navigation } from 'react-native-navigation';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { ActionCreators } from './redux/action';
-import Map from './components/Map';
+import * as counterActions from './redux/actions';
 import { Button, Layout, Text } from 'react-native-ui-kitten';
 
 const styles = StyleSheet.create({
@@ -17,29 +14,6 @@ const styles = StyleSheet.create({
 });
 
 class Home extends Component {
-  // componentDidMount() {
-  //   this.navigationEventListener = Navigation.events().bindComponent(this);
-  // }
-
-  // componentWillUnmount() {
-  //   // Not mandatory
-  //   if (this.navigationEventListener) {
-  //     this.navigationEventListener.remove();
-  //   }
-  // }
-
-  // navigationButtonPressed = ({ buttonId }) => {
-  //   if (buttonId === 'toggleDrawer') {
-  //     Navigation.mergeOptions('SideDrawer', {
-  //       sideMenu: {
-  //         left: {
-  //           visible: true,
-  //         },
-  //       },
-  //     });
-  //   }
-  // };
-
   render() {
     return (
       <Layout style={styles.container}>
@@ -60,15 +34,13 @@ Home.defaultProps = {};
 Home.options = () => {};
 
 const mapStateToProps = state => {
-  return {
-    message: state.defaultReducer.message,
-    count: state.defaultReducer.count,
-  };
+  console.log('TCL: state', state);
+  return {};
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+const actions = { ...counterActions };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(Home);

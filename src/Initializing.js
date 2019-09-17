@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Navigation } from 'react-native-navigation';
 import { View, Text, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import * as counterActions from './redux/actions';
 import { goToAuth, goHome } from './navigation';
 
 const styles = StyleSheet.create({
@@ -81,7 +82,7 @@ const mapStateToProps = () => {
   return {};
 };
 
-const mapDispatchToProps = {};
+const actions = { ...counterActions };
 
 Initializing.options = () => {
   return {
@@ -95,5 +96,5 @@ Initializing.options = () => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(Initializing);

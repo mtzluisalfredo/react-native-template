@@ -3,8 +3,7 @@ import { Navigation } from 'react-native-navigation';
 import { withStyles } from 'react-native-ui-kitten/theme';
 import { Layout, Text } from 'react-native-ui-kitten/ui';
 import { InputButton, textStyle } from '../../components/common';
-import { ActionCreators } from './../../redux/action';
-import { bindActionCreators } from 'redux';
+import * as counterActions from './../../redux/actions';
 import { connect } from 'react-redux';
 import { TouchableOpacity } from 'react-native';
 
@@ -69,7 +68,7 @@ class HomeComponent extends React.Component {
 
   render() {
     const { themedStyle } = this.props;
-    const days = this.getDaysInMonth(2019, 8);
+    // const days = this.getDaysInMonth(2019, 8);
     return (
       <Layout style={themedStyle.container}>
         <InputButton />
@@ -93,11 +92,11 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+const actions = { ...counterActions };
 
 const HomeComponentRedux = connect(
   mapStateToProps,
-  mapDispatchToProps
+  actions
 )(HomeComponent);
 
 export const Home = withStyles(HomeComponentRedux, theme => {

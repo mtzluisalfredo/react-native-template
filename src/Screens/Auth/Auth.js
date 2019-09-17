@@ -1,48 +1,156 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
-// import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import Icon from 'react-native-vector-icons/Ionicons';
+import { View } from 'react-native';
+import PropTypes from 'prop-types';
+import * as counterActions from './../../redux/actions';
+import { withStyles } from 'react-native-ui-kitten/theme';
+import { Button, Text } from 'react-native-ui-kitten/ui';
+import { SignInForm2, SocialAuth } from './../../components/auth';
+import { ScrollableAvoidKeyboard, ImageOverlay, textStyle } from './../../components/common';
 
-export class Auth extends Component {
-  static propTypes = {};
+class AuthComponent extends Component {
+  state = {
+    formData: undefined,
+  };
+  onForgotPasswordButtonPress = () => {
+    this.props.onForgotPasswordPress();
+  };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: 'Bienvenido',
-      subTitle: 'Inicio de sesión',
-    };
-  }
+  onSignInButtonPress = () => {
+    this.props.onSignInPress(this.state.formData);
+  };
+
+  onSignUpButtonPress = () => {
+    this.props.onSignUpPress();
+  };
+
+  onGoogleButtonPress = () => {
+    this.props.onGooglePress();
+  };
+
+  onFacebookButtonPress = () => {
+    this.props.onFacebookPress();
+  };
+
+  onTwitterButtonPress = () => {
+    this.props.onTwitterPress();
+  };
+
+  onFormDataChange = formData => {
+    this.setState({ formData });
+  };
 
   render() {
-    const { title, subTitle } = this.state;
+    console.log('TCL: Auth -> render -> render', this.props);
+    const { themedStyle } = this.props;
     return (
-      <ScrollView scrollEnabled={false} contentContainerStyle={{ flex: 1 }}>
-        <Text>Luis Alfredo</Text>
-      </ScrollView>
+      <ScrollableAvoidKeyboard>
+        <ImageOverlay style={themedStyle.container} source="">
+          <View style={themedStyle.headerContainer}>
+            <Text style={themedStyle.helloLabel} category="h1">
+              Hello
+            </Text>
+            <Text style={themedStyle.signInLabel} category="s1">
+              Sign in to your account
+            </Text>
+          </View>
+          <SignInForm2
+            style={themedStyle.formContainer}
+            onForgotPasswordPress={this.onForgotPasswordButtonPress}
+            onDataChange={this.onFormDataChange}
+          />
+          <Button
+            style={themedStyle.signInButton}
+            textStyle={textStyle.button}
+            size="giant"
+            disabled={!this.state.formData}
+            onPress={this.onSignInButtonPress}
+          >
+            SIGN IN
+          </Button>
+          <SocialAuth
+            style={themedStyle.socialAuthContainer}
+            iconStyle={themedStyle.socialAuthIcon}
+            hint="Or Sign In using Social Media"
+            onGooglePress={this.onGoogleButtonPress}
+            onFacebookPress={this.onFacebookButtonPress}
+            onTwitterPress={this.onTwitterButtonPress}
+          />
+          <Button
+            style={themedStyle.signUpButton}
+            textStyle={themedStyle.signUpText}
+            appearance="ghost"
+            activeOpacity={0.75}
+            onPress={this.onSignUpButtonPress}
+          >
+            Don't have an account? Sign Up
+          </Button>
+        </ImageOverlay>
+      </ScrollableAvoidKeyboard>
     );
   }
 }
 
-const mapStateToProps = state => {
-console.log('TCL: state', state)
-  return { state };
+AuthComponent.propTypes = {
+  componentId: PropTypes.string,
+  triggerDefault: PropTypes.func,
 };
 
-const mapDispatchToProps = {};
+AuthComponent.defaultProps = {};
 
-Auth.options = () => {
+AuthComponent.options = () => {};
+
+const mapStateToProps = state => {
+  console.log('TCL: state', state);
+  return {};
+};
+
+const actions = { ...counterActions };
+
+const AuthComponentRedux = connect(
+  mapStateToProps,
+  actions
+)(AuthComponent);
+
+export const Auth = withStyles(AuthComponentRedux, theme => {
   return {
-    topBar: {
-      visible: false,
-      drawBehind: true,
-      animate: false,
+    container: {
+      flex: 1,
+      backgroundColor: theme['background-basic-color-1'],
+    },
+    headerContainer: {
+      minHeight: 216,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    formContainer: {
+      flex: 1,
+      paddingHorizontal: 16,
+    },
+    socialAuthContainer: {
+      marginTop: 32,
+    },
+    helloLabel: {
+      color: 'white',
+      ...textStyle.headline,
+    },
+    signInLabel: {
+      marginTop: 16,
+      color: 'white',
+      ...textStyle.subtitle,
+    },
+    socialAuthIcon: {
+      tintColor: 'white',
+    },
+    signInButton: {
+      marginHorizontal: 16,
+    },
+    signUpButton: {
+      marginVertical: 12,
+    },
+    signUpText: {
+      color: 'white',
+      ...textStyle.subtitle,
     },
   };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Auth);
+});

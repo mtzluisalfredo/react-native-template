@@ -77,7 +77,7 @@ export default class Map extends Component {
           },
         });
       },
-      () => { }, //error callback
+      () => {}, //error callback
       {
         enableHighAccuracy: true, //localização via GPS, mais real. false -> wifi location
       }

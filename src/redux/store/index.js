@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger';
 
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
-import rootReducers from '../reducer';
+import rootReducers from '../reducers';
 
 const persistConfig = {
   key: 'root',

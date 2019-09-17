@@ -25,8 +25,6 @@ const icons = {
   'filter-variant--active': [30, '#fff', MaterialCommunityIcons],
   'ios-arrow-down': [30, '#bbb', Ionicons],
   'ios-arrow-down--active': [30, '#fff', Ionicons],
-
-
 };
 
 const defaultIconProvider = Ionicons;
@@ -39,15 +37,13 @@ const iconsApp = () => {
         return Provider.getImageSource(
           iconName.replace(replaceSuffixPattern, ''),
           icons[iconName][0],
-          icons[iconName][1],
+          icons[iconName][1]
         );
-      }),
+      })
     ).then(sources => {
-      Object.keys(icons).forEach(
-        (iconName, idx) => {
-          (iconsMap[iconName] = sources[idx]);
-        },
-      );
+      Object.keys(icons).forEach((iconName, idx) => {
+        iconsMap[iconName] = sources[idx];
+      });
       // Call resolve (and we are done)
       resolve(true);
     });
