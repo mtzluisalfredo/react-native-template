@@ -21,7 +21,7 @@ export class Initializing extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: 1,
+      user: 0,
     };
   }
 
@@ -33,15 +33,12 @@ export class Initializing extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { user } = this.state;
-    console.log('TCL: Initializing -> componentDidUpdate -> this', this.props);
-    // Uso tipico (no olvides de comparar los props):
     if (user !== prevState.user) {
       this.initApp(user);
     }
   }
 
   componentWillUnmount() {
-    // Not mandatory
     if (this.navigationEventListener) {
       this.navigationEventListener.remove();
     }
@@ -57,8 +54,7 @@ export class Initializing extends Component {
         },
       });
     }
-  }
-
+  };
 
   initApp = user => {
     try {
@@ -70,7 +66,7 @@ export class Initializing extends Component {
     } catch (err) {
       goToAuth();
     }
-  }
+  };
 
   render() {
     return (
@@ -99,5 +95,5 @@ Initializing.options = () => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Initializing);

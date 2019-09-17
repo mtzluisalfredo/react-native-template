@@ -70,7 +70,6 @@ class HomeComponent extends React.Component {
   render() {
     const { themedStyle } = this.props;
     const days = this.getDaysInMonth(2019, 8);
-    console.log('TCL: HomeComponent -> render -> days', days);
     return (
       <Layout style={themedStyle.container}>
         <InputButton />

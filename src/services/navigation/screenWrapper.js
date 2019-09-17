@@ -47,7 +47,6 @@ class Wrapper extends React.Component {
   render() {
     const { Screen, ScreenProps, app } = this.props;
     const appTheme = 'dark';
-    console.log("TCL: Wrapper -> render -> mapping", dark)
     return (
       <ApplicationProvider mapping={mapping} theme={appTheme === 'dark' ? dark : light}>
         {/*{!statusBarDisabled && <DynamicStatusBar currentTheme={app.theme} />}*/}

@@ -41,7 +41,6 @@ class Home extends Component {
   // };
 
   render() {
-    console.log(this.props)
     return (
       <Layout style={styles.container}>
         <Text category="h4">Welcome to UI Kitten</Text>

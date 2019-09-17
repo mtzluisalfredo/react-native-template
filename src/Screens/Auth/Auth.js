@@ -19,14 +19,15 @@ export class Auth extends Component {
     const { title, subTitle } = this.state;
     return (
       <ScrollView scrollEnabled={false} contentContainerStyle={{ flex: 1 }}>
-        <Text>Luis</Text>
+        <Text>Luis Alfredo</Text>
       </ScrollView>
     );
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+console.log('TCL: state', state)
+  return { state };
 };
 
 const mapDispatchToProps = {};
@@ -43,5 +44,5 @@ Auth.options = () => {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Auth);

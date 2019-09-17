@@ -35,7 +35,6 @@ class CalendarComponent extends React.Component {
     };
   }
   componentDidMount() {
-    // console.log('TCL: CalendarComponent -> componentDidMount -> this.scroll', this.scrollViewRef);
     // // this.scrollViewRef.scrollTo({ y: 100, x: 100 });
     // setTimeout(() => {
     //   this.scrollViewRef.scrollTo({ x: 665 });
@@ -56,16 +55,10 @@ class CalendarComponent extends React.Component {
     const { themedStyle } = this.props;
     const { monthState } = this.state;
     const days = this.getDaysInMonth(2019, monthState + 1);
-    // console.log('TCL: HomeComponent -> render -> days', days);
-    // console.log('TCL: HomeComponent -> render -> days', month);
-    console.log('TCL: HomeComponent -> render -> days', today);
 
     const spliceDays = days.splice(today - 1);
-    // console.log('TCL: CalendarComponent -> render -> spliceDays', spliceDays.length);
-    // console.log('TCL: CalendarComponent -> render -> spliceDays', days);
 
     const dayDifference = 6 - spliceDays.length;
-    console.log('TCL: CalendarComponent -> render -> dayDifference', dayDifference);
     // const luis = Array.from({ length: dayDifference }, (x, i) => {});
 
     const spliceMonths = months.splice(monthState);
