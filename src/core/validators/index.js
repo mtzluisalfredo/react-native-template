@@ -8,6 +8,11 @@ export const PATTERN_CARD_NUMBER = /\d{4} \d{4} \d{4} \d{4}/;
 export const PATTERN_CARD_EXPIRE_DATE = /\d{2}\/\d{2}/;
 export const PATTERN_CARD_CVV = /\d{3}/;
 export const PATTERN_FULLNAME = /^$|^[a-zA-ZčČćĆđĐšŠžŽ-]+ [a-zA-ZčČćĆđĐšŠžŽ-]+$/;
+export const ONLY_NUMBER = /^(?:[1-9]\d*|\d)$/;;
+
+export const OnlyNumbers = value => {
+  return RegExpValidator(ONLY_NUMBER, value);
+};
 
 export const NameValidator = value => {
   return RegExpValidator(PATTERN_NAME, value);

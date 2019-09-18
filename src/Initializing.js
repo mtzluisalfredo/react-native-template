@@ -35,14 +35,16 @@ export class Initializing extends Component {
 
   componentDidMount() {
     const { user } = this.state;
-    this.initApp(user);
+    const { login_success } = this.props;
+    this.initApp(login_success);
     this.navigationEventListener = Navigation.events().bindComponent(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { user } = this.state;
-    if (user !== prevState.user) {
-      this.initApp(user);
+    const { login_success } = this.props;
+    if (login_success !== prevProps.login_success) {
+      this.initApp(login_success);
     }
   }
 
@@ -85,8 +87,9 @@ export class Initializing extends Component {
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  const { login_success } = state.counter;
+  return { login_success };
 };
 
 const actions = { ...counterActions };

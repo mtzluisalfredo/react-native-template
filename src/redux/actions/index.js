@@ -4,4 +4,4 @@ export const types = {
   ...counterTypes,
 };
 
-export { login, signOut } from './counter';
+export { login, signOut, signUp, confirmSignUp, saveDataForm, cancelValidate } from './counter';

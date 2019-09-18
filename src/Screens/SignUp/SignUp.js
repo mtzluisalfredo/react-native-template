@@ -6,12 +6,10 @@ import { Navigation } from 'react-native-navigation';
 import * as counterActions from './../../redux/actions';
 import { withStyles } from 'react-native-ui-kitten/theme';
 import { Button, Text } from 'react-native-ui-kitten/ui';
-import { SignInForm2, SocialAuth } from './../../components/auth';
+import { SignUpForm2, ConfirmSignUp } from './../../components/auth';
 import { ScrollableAvoidKeyboard, ImageOverlay, textStyle } from './../../components/common';
 
-import { goHome } from './../../navigation';
-
-class AuthComponent extends Component {
+class SignUpComponent extends Component {
   constructor(props) {
     super(props);
     Navigation.setDefaultOptions({
@@ -26,52 +24,44 @@ class AuthComponent extends Component {
   state = {
     formData: undefined,
   };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.login_success !== this.props.login_success) {
-      goHome();
-    }
-  }
-
   onForgotPasswordButtonPress = () => {
     this.props.onForgotPasswordPress();
   };
 
-  onSignInButtonPress = () => {
-    this.props.login(this.state.formData);
-  };
-
   onSignUpButtonPress = () => {
-    Navigation.push(this.props.componentId, {
-      component: {
-        id: 'SignUp',
-        name: 'SignUp',
-      },
-    });
+    this.props.signUp(this.state.formData);
+    // this.props.login(this.state.formData);
+    // this.props.login(this.state.formData);
   };
 
-  onGoogleButtonPress = () => {
-    // this.props.onGooglePress();
+  onConfirmSignUpButtonPress = () => {
+    const { password, username } = this.props;
+    console.log('TCL: SignUpComponent -> onConfirmSignUpButtonPress -> password, username', password, username)
+    const { formData } = this.state;
+    console.log('TCL: SignUpComponent -> onConfirmSignUpButtonPress -> formData', formData)
+    this.props.confirmSignUp(username, formData.code, password);
   };
 
-  onFacebookButtonPress = () => {
-    // this.props.onFacebookPress();
-  };
-
-  onTwitterButtonPress = () => {
-    // this.props.onTwitterPress();
+  onSignInButtonPress = () => {
+    Navigation.pop(this.props.componentId);
   };
 
   onFormDataChange = formData => {
     this.setState({ formData });
   };
 
+  onCancelValidate = () => {
+    this.props.cancelValidate();
+    this.onSignInButtonPress();
+  };
+
   render() {
     console.log('TCL: Auth -> render -> render', this.props);
-    const { themedStyle } = this.props;
+    const { themedStyle, signUp_success } = this.props;
+    const confirm = signUp_success;
     return (
       <ScrollableAvoidKeyboard>
-        <ImageOverlay style={themedStyle.container} source="">
+        <ImageOverlay style={themedStyle.container}>
           <View style={themedStyle.headerContainer}>
             <Text style={themedStyle.helloLabel} category="h1">
               Hello
@@ -80,9 +70,9 @@ class AuthComponent extends Component {
               Sign in to your account
             </Text>
           </View>
-          <SignInForm2
+          <SignUpForm2
+            confirm={confirm}
             style={themedStyle.formContainer}
-            onForgotPasswordPress={this.onForgotPasswordButtonPress}
             onDataChange={this.onFormDataChange}
           />
           <Button
@@ -90,26 +80,18 @@ class AuthComponent extends Component {
             textStyle={textStyle.button}
             size="giant"
             disabled={!this.state.formData}
-            onPress={this.onSignInButtonPress}
+            onPress={confirm ? this.onConfirmSignUpButtonPress : this.onSignUpButtonPress}
           >
-            SIGN IN
+            {confirm ? 'VALIDATE CODE' : 'SIGN UP'}
           </Button>
-          <SocialAuth
-            style={themedStyle.socialAuthContainer}
-            iconStyle={themedStyle.socialAuthIcon}
-            hint="Or Sign In using Social Media"
-            onGooglePress={this.onGoogleButtonPress}
-            onFacebookPress={this.onFacebookButtonPress}
-            onTwitterPress={this.onTwitterButtonPress}
-          />
           <Button
             style={themedStyle.signUpButton}
             textStyle={themedStyle.signUpText}
             appearance="ghost"
             activeOpacity={0.75}
-            onPress={this.onSignUpButtonPress}
+            onPress={this.onCancelValidate}
           >
-            Don't have an account? Sign Up
+            Cancel Validate Code
           </Button>
         </ImageOverlay>
       </ScrollableAvoidKeyboard>
@@ -117,16 +99,16 @@ class AuthComponent extends Component {
   }
 }
 
-AuthComponent.propTypes = {
+SignUpComponent.propTypes = {
   componentId: PropTypes.string,
   triggerDefault: PropTypes.func,
 };
 
-AuthComponent.defaultProps = {};
+SignUpComponent.defaultProps = {};
 
 const mapStateToProps = state => {
-  const { login_success } = state.counter;
-  return { login_success };
+  const { signUp_success, username, password } = state.counter;
+  return { signUp_success, username, password };
 };
 
 const actions = { ...counterActions };
@@ -134,9 +116,9 @@ const actions = { ...counterActions };
 const AuthComponentRedux = connect(
   mapStateToProps,
   actions
-)(AuthComponent);
+)(SignUpComponent);
 
-export const Auth = withStyles(AuthComponentRedux, theme => {
+export const SignUp = withStyles(AuthComponentRedux, theme => {
   return {
     container: {
       flex: 1,

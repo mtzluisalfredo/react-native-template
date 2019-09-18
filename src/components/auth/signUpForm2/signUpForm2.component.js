@@ -1,29 +1,19 @@
 import React from 'react';
-import {
-  View,
-} from 'react-native';
-import {
-  withStyles,
-} from 'react-native-ui-kitten/theme';
+import { View } from 'react-native';
+import { withStyles } from 'react-native-ui-kitten/theme';
 import { CheckBox } from 'react-native-ui-kitten/ui';
-import {
-  textStyle,
-  ValidationInput,
-} from '../../common';
-import {
-  EmailIconFill,
-  EyeOffIconFill,
-  PersonIconFill,
-} from '../../../assets/icons';
+import { textStyle, ValidationInput } from '../../common';
+import { EmailIconFill, EyeOffIconFill, PersonIconFill } from '../../../assets/icons';
 import {
   EmailValidator,
   NameValidator,
   PasswordValidator,
+  OnlyNumbers,
 } from '../../../core/validators';
 
 class SignUpForm2Component extends React.Component {
-
   state = {
+    code: undefined,
     username: undefined,
     email: undefined,
     password: undefined,
@@ -48,81 +38,100 @@ class SignUpForm2Component extends React.Component {
     }
   }
 
-  onTermsValueChange = (termsAccepted) => {
+  onTermsValueChange = termsAccepted => {
     this.setState({ termsAccepted });
   };
 
-  onUsernameInputTextChange = (username) => {
+  onCodeInputTextChange = code => {
+    this.setState({ code });
+  };
+
+  onUsernameInputTextChange = username => {
     this.setState({ username });
   };
 
-  onEmailInputTextChange = (email) => {
+  onEmailInputTextChange = email => {
     this.setState({ email });
   };
 
-  onPasswordInputValidationResult = (password) => {
+  onPasswordInputValidationResult = password => {
     this.setState({ password });
   };
 
-  isValid = (value) => {
-    const { username, password, email, termsAccepted } = value;
-
-    return username !== undefined
-      && password !== undefined
-      && email !== undefined
-      && termsAccepted;
+  isValid = value => {
+    const { username, password, email, termsAccepted, code } = value;
+    const { confirm } = this.props;
+    if (confirm) {
+      return code !== undefined;
+    } else {
+      return (
+        username !== undefined && password !== undefined && email !== undefined && termsAccepted
+      );
+    }
   };
 
   render() {
-    const { style, themedStyle, ...restProps } = this.props;
+    const { style, confirm, themedStyle, ...restProps } = this.props;
 
     return (
-      <View
-        style={[themedStyle.container, style]}
-        {...restProps}>
-        <View style={themedStyle.formContainer}>
-          <ValidationInput
-            style={themedStyle.usernameInput}
-            textStyle={textStyle.paragraph}
-            autoCapitalize='none'
-            placeholder='User Name'
-            icon={PersonIconFill}
-            validator={NameValidator}
-            onChangeText={this.onUsernameInputTextChange}
-          />
-          <ValidationInput
-            style={themedStyle.emailInput}
-            textStyle={textStyle.paragraph}
-            autoCapitalize='none'
-            placeholder='Email'
-            icon={EmailIconFill}
-            validator={EmailValidator}
-            onChangeText={this.onEmailInputTextChange}
-          />
-          <ValidationInput
-            style={themedStyle.passwordInput}
-            textStyle={textStyle.paragraph}
-            autoCapitalize='none'
-            secureTextEntry={true}
-            placeholder='Password'
-            icon={EyeOffIconFill}
-            validator={PasswordValidator}
-            onChangeText={this.onPasswordInputValidationResult}
-          />
-          <CheckBox
-            style={themedStyle.termsCheckBox}
-            textStyle={themedStyle.termsCheckBoxText}
-            checked={this.state.termsAccepted}
-            onChange={this.onTermsValueChange}
-            text='I read and agree to Terms & Conditions'
-          />
-        </View>
+      <View style={[themedStyle.container, style]} {...restProps}>
+        {confirm && (
+          <View style={themedStyle.formContainer}>
+            <ValidationInput
+              style={themedStyle.usernameInput}
+              textStyle={textStyle.paragraph}
+              keyboardType="numeric"
+              placeholder="Enter code"
+              validator={OnlyNumbers}
+              onChangeText={this.onCodeInputTextChange}
+            />
+          </View>
+        )}
+        {!confirm && (
+          <View style={themedStyle.formContainer}>
+            <ValidationInput
+              style={themedStyle.usernameInput}
+              textStyle={textStyle.paragraph}
+              autoCapitalize="none"
+              placeholder="User Name"
+              icon={PersonIconFill}
+              validator={NameValidator}
+              onChangeText={this.onUsernameInputTextChange}
+            />
+            <ValidationInput
+              style={themedStyle.emailInput}
+              textStyle={textStyle.paragraph}
+              autoCapitalize="none"
+              placeholder="Email"
+              icon={EmailIconFill}
+              validator={EmailValidator}
+              onChangeText={this.onEmailInputTextChange}
+            />
+            <ValidationInput
+              style={themedStyle.passwordInput}
+              textStyle={textStyle.paragraph}
+              autoCapitalize="none"
+              secureTextEntry={true}
+              placeholder="Password"
+              icon={EyeOffIconFill}
+              validator={PasswordValidator}
+              onChangeText={this.onPasswordInputValidationResult}
+            />
+            <CheckBox
+              style={themedStyle.termsCheckBox}
+              textStyle={themedStyle.termsCheckBoxText}
+              checked={this.state.termsAccepted}
+              onChange={this.onTermsValueChange}
+              text="I read and agree to Terms & Conditions"
+            />
+          </View>
+        )}
       </View>
     );
   }
 }
 
-export const SignUpForm2 = withStyles(SignUpForm2Component, (theme) => ({
+export const SignUpForm2 = withStyles(SignUpForm2Component, theme => ({
   container: {},
   forgotPasswordContainer: {
     flexDirection: 'row',
