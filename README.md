@@ -1,28 +1,45 @@
-# Template react-native
+## React Native custom authentication with React hooks, React Native and AWS Amplify
 
-Funcional no Android e iOS.
+> Main code is located at [App.js](https://github.com/dabit3/react-native-custom-authentication/blob/master/App.js)
 
-## libs
-- react-native@0.60.3
-- redux
-- react-redux
-- redux-persist
-- apisauce
-- react-native-navigation
-- react-native-vector-icons
-- reactotron-react-native
-- aws amplify
+## To deploy this app
 
-## utils
-- eslint
+1. Clone the repo and change into the directory
 
-## Para rodar en android
-- npm run install
-- react-native run-android
+```sh
+git clone git@github.com:mtzluisalfredo/react-native-template.git
 
-## Para rodar en ios
-- npm run install
-- cd ios
-- pod install
-- cd ..
-- react-native run-ios
+cd react-native-template
+```
+
+2. Install dependencies
+
+```sh
+npm i
+
+# or
+
+yarn
+```
+
+3. Deploy the authentication service
+
+```sh
+amplify init
+
+amplify push
+```
+
+4. Run the app
+
+```sh
+cd ios
+pod install
+cd ..
+react-native run-ios
+
+
+# or
+
+react-native run-android
+```
